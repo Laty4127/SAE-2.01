@@ -7,6 +7,136 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="2*"/>
 
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <TextBlock  Text="Paramètres" FontSize="24" FontWeight="Bold" Margin="5,0,0,0"/>
+                    <TextBlock Text="Affichage" Margin="10"/>
+                    
+                    <StackPanel Orientation="Horizontal" Margin="20,0,10,10">
+                        <TextBlock Text="Taille des icônes" VerticalAlignment="Center"/>
+                        <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                            <TextBlock Text="{Binding ElementName=SliderIcones, Path=Value, StringFormat={}{0:0}%}" FontSize="10" HorizontalAlignment="Center"/>
+                            <Slider x:Name="SliderIcones" Minimum="50" Maximum="150" Value="100" Width="150" TickFrequency="25" IsSnapToTickEnabled="False"/>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" Margin="20,0,10,10">
+                        <TextBlock Text="Taille des textes" VerticalAlignment="Center"/>
+                        <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                            <TextBlock Text="{Binding ElementName=SliderTextes, Path=Value, StringFormat={}{0:0}%}" FontSize="10" HorizontalAlignment="Center"/>
+                            <Slider x:Name="SliderTextes" Minimum="50" Maximum="150" Value="100" Width="150" TickFrequency="25" IsSnapToTickEnabled="False"/>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                    <TextBlock Text="Correction des couleurs" Margin="20,0,10,10"/>
+                    <ComboBox Width="150" HorizontalAlignment="Left" Margin="20,0,0,0" SelectedIndex="0" >
+                        <ComboBoxItem Content="Aucune"/>
+                        <ComboBoxItem Content="Protanopie"/>
+                        <ComboBoxItem Content="Deutéranopie"/>
+                        <ComboBoxItem Content="Tritanopie"/>
+
+                    </ComboBox>
+                    <TextBlock Text="Thème" Margin="10"/>
+                    <TextBlock Text="Fond" Margin="20,0,10,10"/>
+                    <WrapPanel Margin="20,0,10,10">
+                        <Border Width="30" Height="30" Background="White" BorderBrush="Gray" BorderThickness="2" Margin="3" Cursor="Hand"/>
+                        <Border Width="30" Height="30" Background="Black" BorderBrush="Gray" BorderThickness="2" Margin="3" Cursor="Hand"/>
+                        <Border Width="30" Height="30" Background="Red" BorderBrush="Gray" BorderThickness="2" Margin="3" Cursor="Hand"/>
+                        <Border Width="30" Height="30" Background="Blue" BorderBrush="Gray" BorderThickness="2" Margin="3" Cursor="Hand"/>
+                        <Border Width="30" Height="30" Background="Green" BorderBrush="Gray" BorderThickness="2" Margin="3" Cursor="Hand"/>
+                    </WrapPanel>
+                    <TextBlock Text="Cadre" Margin="20,0,10,10"/>
+                    <WrapPanel Margin="20,0,10,10">
+                        <Border Width="30" Height="30" Background="White" BorderBrush="Gray" BorderThickness="2" Margin="3" Cursor="Hand"/>
+                        <Border Width="30" Height="30" Background="Black" BorderBrush="Gray" BorderThickness="2" Margin="3" Cursor="Hand"/>
+                        <Border Width="30" Height="30" Background="Red" BorderBrush="Gray" BorderThickness="2" Margin="3" Cursor="Hand"/>
+                        <Border Width="30" Height="30" Background="Blue" BorderBrush="Gray" BorderThickness="2" Margin="3" Cursor="Hand"/>
+                        <Border Width="30" Height="30" Background="Green" BorderBrush="Gray" BorderThickness="2" Margin="3" Cursor="Hand"/>
+                    </WrapPanel>
+                    <TextBlock Text="Jeton" Margin="20,0,10,10"/>
+                    <TextBlock Text="Jeton" Margin="0,0,0,5"/>
+                    <WrapPanel Margin="20,0,10,10">
+
+                        <!-- Duo Noir / Blanc -->
+                        <Border Width="30" Height="30" BorderBrush="Gray" BorderThickness="2" Margin="3" Cursor="Hand">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Column="0" Fill="Black"/>
+                                <Rectangle Grid.Column="1" Fill="White"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- Duo Rouge / Bleu -->
+                        <Border Width="30" Height="30" BorderBrush="Gray" BorderThickness="2" Margin="3" Cursor="Hand">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Column="0" Fill="Red"/>
+                                <Rectangle Grid.Column="1" Fill="Blue"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- Duo Vert / Jaune -->
+                        <Border Width="30" Height="30" BorderBrush="Gray" BorderThickness="2" Margin="3" Cursor="Hand">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Column="0" Fill="Green"/>
+                                <Rectangle Grid.Column="1" Fill="Yellow"/>
+                            </Grid>
+                        </Border>
+
+                    </WrapPanel>
+
+                    <TextBlock Text="Son" Margin="10"/>
+                    <StackPanel Orientation="Horizontal" Margin="20,0,10,10">
+                        <TextBlock Text="Son Général" VerticalAlignment="Center"/>
+                        <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                            <TextBlock Text="{Binding ElementName=SliderSonGeneral, Path=Value, StringFormat={}{0:0}%}" FontSize="10" HorizontalAlignment="Center"/>
+                            <Slider x:Name="SliderSonGeneral" Minimum="0" Maximum="100" Value="100" Width="150" TickFrequency="25" IsSnapToTickEnabled="False"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="20,0,10,10">
+                        <TextBlock Text="Effets sonores" VerticalAlignment="Center"/>
+                        <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                            <TextBlock Text="{Binding ElementName=SliderEffets, Path=Value, StringFormat={}{0:0}%}" FontSize="10" HorizontalAlignment="Center"/>
+                            <Slider x:Name="SliderEffets" Minimum="0" Maximum="100" Value="100" Width="150" TickFrequency="25" IsSnapToTickEnabled="False"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="20,0,10,10">
+                        <TextBlock Text="Musique" VerticalAlignment="Center"/>
+                        <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                            <TextBlock Text="{Binding ElementName=SliderMusique, Path=Value, StringFormat={}{0:0}%}" FontSize="10" HorizontalAlignment="Center"/>
+                            <Slider x:Name="SliderMusique" Minimum="0" Maximum="100" Value="100" Width="150" TickFrequency="25" IsSnapToTickEnabled="False"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Grid Margin="20,10,20,10">
+                        <Button Content="Réinitialiser" Width="100" Height="30" HorizontalAlignment="Left"/>
+                        <Button Content="Valider" Width="100" Height="30" HorizontalAlignment="Right" Background="White" />
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
     </Grid>
 </Window>
