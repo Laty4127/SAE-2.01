@@ -121,17 +121,6 @@ namespace SAE_2._01_Interface
                     {
                         MessageBox.Show($"Erreur lors de la connexion : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                else if (app.GestionJoueur.JoueurCo != null)
-                    try
-                    {
-                        await app.GestionJoueur.Modifier(TxtProfilNom.Text, PbMDP.Password);
-                        MessageBox.Show("Profil modifié avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Erreur lors de la modification du profil : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-
                 else
                     try
                     {

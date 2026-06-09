@@ -25,10 +25,20 @@ namespace SAE_2._01_Interface
         private bool editionNom = false;
 
 
-        private void BtnModifierNom_Click(object sender, RoutedEventArgs e)
+        private async void BtnModifierNom_Click(object sender, RoutedEventArgs e)
         {
+            var app = Application.Current as App;
             editionNom = !editionNom;
             TxtProfilNom.IsReadOnly = !editionNom;
+            try
+            {
+                await app.GestionJoueur.Modifier(TxtProfilNom.Text, null);
+                MessageBox.Show("Profil modifié avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de la modification du profil : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
 
